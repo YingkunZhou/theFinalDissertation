@@ -21,7 +21,11 @@
 
 ## Dec 15 useful links
 [bsdcan](http://www.bsdcan.org/2019/)
+
 [risc-v proceedings](https://riscv.org/category/workshops/proceedings/)
+
 [risc-v-tutorial-hpca](https://riscv.org/2015/02/risc-v-tutorial-hpca-2015/)
+
 [risc-v mail list](https://riscv.org/mailing-lists/)
+
 [risc-v stackoverflow](https://stackoverflow.com/questions/tagged/riscv)
