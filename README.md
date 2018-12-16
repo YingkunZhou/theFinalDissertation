@@ -19,6 +19,33 @@
 
 [An update on lowRISC - 2nd RISC-V Workshop](https://www.youtube.com/watch?v=j94n8yAvq5U)
 
+### 1st RISC-V Workshop Proceedings
+[Introductions and Welcome](https://www.youtube.com/watch?v=A5kpo_ff98M&feature=youtu.be)
+
+[RISC-V Projects in India](https://www.youtube.com/watch?v=OoxOzvf78uQ&feature=youtu.be)
+
+[LowRISC SoC](https://www.youtube.com/watch?v=r1i9SAOdyS4&feature=youtu.be)
+
+[RISC-V at BlueSpec](https://www.youtube.com/watch?v=6G0xsL1lmrg&feature=youtu.be)
+
+[RISC-V Software Toolchain](https://www.youtube.com/watch?v=XSyH9T-Cj4w&feature=youtu.be)
+
+[RISC-V “Rocket Chip” SoC Generator in Chisel](https://www.youtube.com/watch?v=Ir3h3qWcNlg&feature=youtu.be)
+
+[Poster and Demo Previews](https://www.youtube.com/watch?v=yM1SQPpXPXQ&feature=youtu.be)
+
+[Structure of the RISC-V Software Stack](https://www.youtube.com/watch?v=2T3eRndwcr0&feature=youtu.be)
+
+[Debugging on RISC-V](https://www.youtube.com/watch?v=sIfG4C936rA&feature=youtu.be)
+
+[Porting New Code to RISC-V with OpenEmbedded](https://www.youtube.com/watch?v=0xfDcckQfGM&feature=youtu.be)
+
+[RISC-V Testing Environments](https://www.youtube.com/watch?v=mbyb7BgYyXg&feature=youtu.be)
+
+[Chisel Quick Tutorial](https://www.youtube.com/watch?v=pfM1WUWbfBs&feature=youtu.be)
+
+[Working with Rocket Chip, Adding Extensions, ASIC and FPGA Infrastructure](https://www.youtube.com/watch?v=64nsYJJqNvI&feature=youtu.be)
+
 ## Dec 15 useful links
 [bsdcan](http://www.bsdcan.org/2019/)
 
