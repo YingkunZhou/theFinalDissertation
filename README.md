@@ -18,3 +18,6 @@
 [LowRISC SoC - 1st RISC-V Workshop](https://www.youtube.com/watch?v=r1i9SAOdyS4)
 
 [An update on lowRISC - 2nd RISC-V Workshop](https://www.youtube.com/watch?v=j94n8yAvq5U)
+
+## Dec 15 useful links
+[others-bsdcan](http://www.bsdcan.org/2019/)
