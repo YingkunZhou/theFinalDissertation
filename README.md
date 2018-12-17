@@ -59,8 +59,22 @@
 
 ## Dec 16 get start risc-v
 
-[Getting Started with RISC-V](http://riscv.org.s3-website-us-west-1.amazonaws.com/getting-started.html)
+Rocket Chip is an open-source Sysem-on-Chip design generator that emits synthesizable RTL. It leverages the Chisel hardware construction language to compose a library of sophisticated generators for cores, caches, and interconnects into an integrated SoC. Rocket Chip generates general-purpose processor cores that use the open RISC-V ISA, and provides both an in-order core generator (Rocket) and an out-of-order core generator (BOOM). For SoC designers interested in utilizing heterogeneous specialization for added efficiency gains, Rocket Chip supports the integration of custom accelerators in the form of instruction set extensions, coprocessors, or fully independent novel cores. Rocket Chip has been taped out (manufactured) eleven times, and yielded functional silicon prototypes capable of booting Linux.
 
+[Getting Started with RISC-V](http://riscv.org.s3-website-us-west-1.amazonaws.com/getting-started.html)
+[another getting started](https://www.semiwiki.com/forum/content/7225-getting-started-risc-v.html)
+[lowRISC](https://www.lowrisc.org/docs/tagged-memory-v0.1/setup/)
+[get started chisel](https://chisel.eecs.berkeley.edu/)
+[BOOM core document](https://docs.boom-core.org/en/latest/)
+[BOOM home website](https://boom-core.org/index)
+[chisel vedio youtube](https://www.youtube.com/channel/UCfangLtLIhrEwDU-xH4VkLg/videos)
+[Generating and testing of a RISC-V core - Week 1 of GSoC 2016](http://eliaskousk.teamdac.com/entry/generating-and-testing-of-a-risc-v-core-week-1-of-gsoc-2016)
+[Google Summer of Code](https://summerofcode.withgoogle.com/archive/)
+[cs250 spring 2017](https://inst.eecs.berkeley.edu/~cs250/sp17/)
+[cs250 spring 2016](http://www-inst.eecs.berkeley.edu/~cs250/sp16/)
+[cs250 chisel](https://github.com/ucberkeley-cs250/chisel)
+[cs252 spring 2018](http://www-inst.eecs.berkeley.edu/~cs152/sp18/)
+[cs252 spring 2017](https://inst.eecs.berkeley.edu/~cs252/sp17/)
 ### Install QEMU, a fast ISA Simulator for risc-v
 
 #### downlown qemu source
