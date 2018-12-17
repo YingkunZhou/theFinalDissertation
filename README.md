@@ -56,3 +56,29 @@
 [risc-v mail list](https://riscv.org/mailing-lists/)
 
 [risc-v stackoverflow](https://stackoverflow.com/questions/tagged/riscv)
+
+## Dec 16 get start risc-v
+
+[Getting Started with RISC-V](http://riscv.org.s3-website-us-west-1.amazonaws.com/getting-started.html)
+
+### Install QEMU, a fast ISA Simulator for risc-v
+
+#### downlown qemu source
+'''
+git clone https://github.com/ucb-bar/riscv-qemu.git
+'''
+#### prepare environmnent library
+'''
+sudo apt-get install libpixman-1-dev
+sudo apt-get install libglib2.0-dev
+'''
+#### config
+'''
+./configure --target-list=riscv64-softmmu,riscv32-softmmu,riscv64-linux-user,riscv32-linux-user
+'''
+#### make
+'''
+make
+'''
+
+
