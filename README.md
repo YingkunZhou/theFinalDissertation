@@ -107,4 +107,29 @@ sudo apt-get install libglib2.0-dev
 make
 ```
 
+## Dec 22
+### get familiar with sbt
+[sbt tutorial](https://www.scala-sbt.org/1.x/docs/sbt-by-example.html)
+[Essential SBT (build tool for Scala)](https://www.scalawilliam.com/essential-sbt/)
+### some useful wiki about chisel
+[Chisel tutorial](https://github.com/ucb-bar/chisel-tutorial/wiki)
+[Users guide to chisel](https://github.com/freechipsproject/chisel3/wiki)
+### summarize about chisel
+The standard Chisel3 compilation pipeline looks like:
+- Chisel3 (Scala) to Firrtl (this is your "Chisel RTL").
+- Firrtl to Verilog (which can then be passed into FPGA or ASIC tools).
+- Verilog to C++ for simulation and testing using Verilator.
 
+### Compiling and Testing Chisel
+In the Chisel repository directory, run:
+```
+sbt compile
+```
+to compile the Chisel library. If the compilation succeeded, you can then run the included unit tests by invoking:
+```
+sbt test
+```
+
+### today TODO list
+- get familiar with the concept of SNAPSHOT
+- be able to build a Chisel repository directory
