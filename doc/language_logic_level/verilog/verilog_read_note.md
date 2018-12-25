@@ -102,7 +102,7 @@ Structure can be described in Verilog HDL using:
 #### Simulating a Design
 Stimulus and control can be generated using initial statements. Responses from the design under test can be saved as "save on change" or as strobed data. Finally, verification can be performed by automatically comparing with expected responses by writing appropriate statements in an initial statement.
 ```
-timescale 1ns/1ns
+`timescale 1ns/1ns
 module Top; // A module may have an empty port list.
 	reg PA, PB, PCi;
 	wire PCo, PSum;
@@ -125,9 +125,9 @@ endmodule
 
  **In a module instantiation, the ports can be associated by name or by position.**
 
- here is another vivid example
- ![Cross-coupled nand gates](pic/Selection_042.png)
- ```
+here is another vivid example
+![Cross-coupled nand gates](pic/Selection_042.png)
+```
 `timescale 10ns/1ns
 module RS_FF (Q, Qbar, R, S);
 	output Q, Qbar;
@@ -159,3 +159,5 @@ module Test;
 endmodule
 ```
 **The second initial statement is used to call the system task Smonitor. This task when called causes the specified string to be printed whenever a change occurs in the specified variables in the argument list.**
+
+### language 
