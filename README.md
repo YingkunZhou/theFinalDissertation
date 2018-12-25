@@ -135,4 +135,6 @@ sbt test
 - be able to build a Chisel repository directory
 
 ## Dec 24
+### how to write md file diligently
 makedown file [format](https://help.github.com/articles/basic-writing-and-formatting-syntax/)
+[Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#images)

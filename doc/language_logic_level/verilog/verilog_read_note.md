@@ -91,3 +91,71 @@ module Test {Pop, Pid);
 endmodule
 ```
 ![initial statement wave graph](pic/Selection_041.png)
+
+#### Describing in Structural Style
+Structure can be described in Verilog HDL using:
+- Built-in gate primitives (at the gate-level)
+- Switch-level primitives (at the transistor-level)
+- User-defined primitives (at the gate-level)
+- Module instances (to create hierarchy)
+
+#### Simulating a Design
+Stimulus and control can be generated using initial statements. Responses from the design under test can be saved as "save on change" or as strobed data. Finally, verification can be performed by automatically comparing with expected responses by writing appropriate statements in an initial statement.
+```
+timescale 1ns/1ns
+module Top; // A module may have an empty port list.
+	reg PA, PB, PCi;
+	wire PCo, PSum;
+	// Instantiate module under test:
+	FA_Seq Fl (PA, PB, PCi, PSum, PCo); // Positional.
+	initial begin: ONLY_ONCE
+		reg [3:0] Pal; // Need 4 bits so that Pal can have the value 8.
+		for (Pal = 0; Pal < 8; Pal = Pal + 1) begin
+			{PA, PB, PCi) = Pal;
+			#5 $display ("PA, PB, PCi=%b%b%b", PA, PB, PCi," 
+				::: PCo, PSum=%b%b", PCo, PSum);
+		end
+	end
+endmodule
+```
+ The Sdisplay system task prints the specified argument values in thespecified format to the output.
+
+ The delay control in the Sdisplay system task call specifies that the $dis-play task is to be executed after 5 time units. This 5 time units basically repre sents the settling time for the logic, that is, the delay time between theapplication of a vector and observing the module-under-test's response.
+ ** Pal is declared locally withinthe initial statement. To do this, the sequential block (begin-end) in the initialstatement has to be labeled. ONLYjONCE is the block label in this case. Theblock label is not necessary if there are no variables declared locally withinthe block.**
+
+ **In a module instantiation, the ports can be associated by name or by position.**
+
+ here is another vivid example
+ ![Cross-coupled nand gates](pic/Selection_042.png)
+ ```
+`timescale 10ns/1ns
+module RS_FF (Q, Qbar, R, S);
+	output Q, Qbar;
+	input R, 5;
+	nand #1 (Q, R, Qbar);
+	nand #1 (Qbar, S, Q); // Instance names are optional in gate instantiations.
+endmodule
+
+module Test;
+	reg TS, TR;
+	wire TQ, TQb; // Instantiate module under test:
+	RS_FF NSTA (.Q(TQ) , .S(TS) , .R(TR) , .Qbar(TQb));// Using named association.
+	// Apply stimulus:
+	initial begin
+		TR = 0;
+		TS = 0;
+		#5 TS = 1;
+		#5 TS = 0;
+		TR = 1;
+		#5 TS = 1;
+		TR = 0;
+		#5 TS= 0;
+		#5 TR = 1;
+	end
+	// Display output:
+	initial
+		$monitor ("At time %t, " $time,
+		" TR=%b, TS=%b, TQ=%b, TQb=%b", TR, TS, TQ, TQb)
+endmodule
+```
+**The second initial statement is used to call the system task Smonitor. This task when called causes the specified string to be printed whenever a change occurs in the specified variables in the argument list.**
