@@ -34,3 +34,60 @@ assign [ delay ] LHS_net = RHS_expression;
 The basic mechanism used to model a design in the dataflow style is thecontinuous assignment. In a continuous assignment, a value is assigned to a net.
 
 **Notice that the continuous assignments model dataflow behavior of thecircuit; the structure is implicit, not explicit. In addition, continuousassignments execute concurrently, that is, they are order-independent.**
+
+#### Describing in Behavioral Style
+The behavior of a design is described using procedural constructs. These are:
+
+- Initial statement: This statement executes only once.
+- Always statement: This statement always executes in a loop, thatis, the statement is executed repeatedly.
+
+**Only a register data type can be assigned a value in either of these statements.Such a data type retains its value until a new value is assigned. All initialstatements and always statements begin execution at time 0 concurrently.**
+
+use the following code to explain
+```
+module FA_Seq {A, B, Cin, Sum, Cout)input A, B, Cin;
+	output Sum, Cout;
+	reg Sum, Cout;
+	reg Tl, T2, T3;
+	always@ (A or B or Cin) begin
+		Sum = (A ^ B) ^ Cin;
+		Tl = A & Cin;
+		T2 = B & Cin;
+		T3 = A & B;
+		Cout = (Tl | T2) | T3;
+	end
+endmodule
+```
+explain:
+The module FA_Seq has three inputs and two outputs. Sum, Cout, Tl, T2 and T3 are declared to be of type reg (reg is one of the register data types) because these are assigned values within the always statement. The always statement has a sequential block (begin-end pair) associated with an event control (the expression following the @ character). This means that whenever an event occurs on A, B or Cin, the sequential block is executed. Statements within a sequential block execute sequentially and the execution suspends after the last statement in the sequential block has executed. After the sequential block completes execution, the always statement again waits for an event to occuron A, B, or Cin.
+
+**The statements that appear within the sequential block are examples of blocking procedural assignments. A blocking procedural assignment completes execution before the next statement executes. A procedural assignment may optionally have a delay.**
+
+Delays can be specified in two different forms:
+- Inter-statement delay: This is the delay by which a statement's execution is delayed.
+```
+Sum = (A ^ B) ^ Cin;
+#4 Tl = A & Cin;
+```
+- Intra-statement delay: This is the delay between computing the value of the right-hand side expression and its assignment to theleft-hand side.
+```
+Sum = #3 (A ^ B) ^ Cin;
+```
+
+Here is a vivid example of initial statement and the behavior of **simulation**
+```
+timescale Ins / Ins
+module Test {Pop, Pid);
+	output Pop, Pid;
+	reg Pop, Pid;
+	initial begin
+		Pop = 0; // Stmt 1
+		Pid = 0; // stmt 2
+		Pop = #5 1;
+		Pid = #3 1;
+		Pop =#6 0;
+		Pid= #2 0;
+	end
+endmodule
+```
+![initial statement wave graph](pic/Selection_041.png)
