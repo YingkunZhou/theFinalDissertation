@@ -118,14 +118,15 @@ module Top; // A module may have an empty port list.
 	end
 endmodule
 ```
- The Sdisplay system task prints the specified argument values in thespecified format to the output.
+ The $display system task prints the specified argument values in thespecified format to the output.
 
- The delay control in the Sdisplay system task call specifies that the $dis-play task is to be executed after 5 time units. This 5 time units basically repre sents the settling time for the logic, that is, the delay time between theapplication of a vector and observing the module-under-test's response.
- ** Pal is declared locally withinthe initial statement. To do this, the sequential block (begin-end) in the initialstatement has to be labeled. ONLYjONCE is the block label in this case. Theblock label is not necessary if there are no variables declared locally withinthe block.**
+ The delay control in the $display system task call specifies that the $dis-play task is to be executed after 5 time units. This 5 time units basically repre sents the settling time for the logic, that is, the delay time between theapplication of a vector and observing the module-under-test's response.
+ ** Pal is declared locally withinthe initial statement. To do this, the sequential block (begin-end) in the initialstatement has to be labeled. ONLY_ONCE is the block label in this case. The block label is not necessary if there are no variables declared locally within the block.**
 
  **In a module instantiation, the ports can be associated by name or by position.**
 
 here is another vivid example
+
 ![Cross-coupled nand gates](pic/Selection_042.png)
 ```
 `timescale 10ns/1ns
@@ -161,3 +162,24 @@ endmodule
 **The second initial statement is used to call the system task Smonitor. This task when called causes the specified string to be printed whenever a change occurs in the specified variables in the argument list.**
 
 ### language 
+#### improve readability
+- The ? character can be used as an alternate for value z in a number. It maybe used to improve readability in cases where the value z is interpreted as a don't care value
+
+- An underscore (_) character can be used in an integer or a real constantfreely; they are ignored in the number itself. only restriction is that the underscore character cannot be the firstcharacter.
+
+#### Base Format Notation
+```
+[ size ] 'base value
+```
+**A number in base format notation is always an unsigned number. The sizespecification is optional in an integer of this form. If no size is specified in aninteger, the size of the number is the number of bits specified in the value.**
+
+#### Data type
+- Net type:
+
+A net typo, represents a physical connection between structural elements. Its value is determined from the value of its drivers suchas a continuous assignment or a gate output. If no driver is connected to a net, the net defaults to a value of z.
+
+- Register type:
+A register type represents an abstract data storage element. It isassigned values only within an always statement or an initialstatement, and its value is saved from one assignment to the next.A register type has a default value of x.
+
+#### vectored and scalared nets
+The keywords, scalared or vectored, can optionally be specified for avector net. If a net is declared with the keyword vectored, then bit-selects andpart-selects of this vector net are not allowed; in other words, the entire nethas to be assigned 
