@@ -133,3 +133,6 @@ sbt test
 ### today TODO list
 - get familiar with the concept of SNAPSHOT
 - be able to build a Chisel repository directory
+
+## Dec 24
+makedown file [format](https://help.github.com/articles/basic-writing-and-formatting-syntax/)
