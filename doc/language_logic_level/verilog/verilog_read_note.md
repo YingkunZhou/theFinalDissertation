@@ -76,7 +76,7 @@ Sum = #3 (A ^ B) ^ Cin;
 
 Here is a vivid example of initial statement and the behavior of **simulation**
 ```
-timescale Ins / Ins
+`timescale 1ns / 1ns // which means must be integer delay
 module Test {Pop, Pid);
 	output Pop, Pid;
 	reg Pop, Pid;
@@ -85,8 +85,8 @@ module Test {Pop, Pid);
 		Pid = 0; // stmt 2
 		Pop = #5 1;
 		Pid = #3 1;
-		Pop =#6 0;
-		Pid= #2 0;
+		Pop = #6 0;
+		Pid = #2 0;
 	end
 endmodule
 ```

@@ -138,3 +138,7 @@ sbt test
 ### how to write md file diligently
 makedown file [format](https://help.github.com/articles/basic-writing-and-formatting-syntax/)
 [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#images)
+
+## Dec 25
+### read [risc-v elf abi doc](https://github.com/riscv/riscv-elf-psabi-doc/blob/master/riscv-elf.md)
+### for floating-point arithmetic please refer ANSI/IEEE Std 754-2008, IEEE standard for floating-point arithmetic, 2008

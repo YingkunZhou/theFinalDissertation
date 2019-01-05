@@ -1,0 +1,56 @@
+% Search for all the places that say "PUT SOMETHING HERE".
+
+\documentclass[11pt]{article}
+\usepackage{amsmath,textcomp,amssymb,geometry,graphicx,enumerate}
+\usepackage{tikz}
+\usepackage{algorithm}  
+\usepackage{algorithmicx}  
+\usepackage{algpseudocode}
+\usepackage{mathtools}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage{mathtools}
+\usepackage{ctex}
+\usetikzlibrary{automata,positioning, arrows}
+\renewcommand{\algorithmicrequire}{\textbf{input:}}  
+\renewcommand{\algorithmicensure}{\textbf{output:}}
+
+\def\Name{Yingkun Zhou}  % Your name
+\def\SID{2015K8009929023}  % Your student ID number
+
+\def\le{\leqslant}
+\def\logN{\log{}n}
+\newcommand{\ro}[1]{\romannumeral #1}
+
+
+
+\title{多发射乱序CPU的RTL级实现与验证}
+\author{\Name, \SID}
+\date{}
+
+\newenvironment{qparts}{\begin{enumerate}[{(}a{)}]}{\end{enumerate}}
+\def\endproofmark{$\Box$}
+\newenvironment{proof}{\par{\bf Proof}:}{\endproofmark\smallskip}
+
+\textheight=9in
+\textwidth=6.5in
+\topmargin=-.75in
+\oddsidemargin=0.25in
+\evensidemargin=0.25in
+
+
+\begin{document}
+\maketitle
+\textbf{key word: }RISC-V, MIPS, CPU, out-of-order，multi-issue
+
+乱序多发射的CPU设计并不容易，而且比设计更加困难的是调试，如何保证复杂执行的CPU能够有条不紊，毫无错误的运行比如像Linux操作系统这样的大型软件更加难上加难。参考RISC-V开源部分的资料，采用的方案如下：
+\begin{enumerate}
+	\item 对于单一时钟，同步复位的电路，采用chisel来编写，考虑到其对于逻辑的刻画效率比verilog更高，而且对于可综合电路的描述能够做到和verilog同样的精确
+	\item 其次乱序的CPU如今也有开源的BOOM代码实现，可以很好的参考借鉴
+	\item RISC-V目前有一整套的调试手段可以学习借用
+	\item RISC-V有整套的软件栈可以运行在自行设计的CPU之上
+\end{enumerate}
+
+综上，计划的第一步是实现一个基于RISC-V ISA的乱序双发射的CPU，调试完毕能够跑通简单的测试程序。本人也深知这绝非易事(希望能够比较顺利完成)。接着在时间允许的情况下做操作系统的移植，继而能够支持多核。注意到一开始的设计必须考虑到微结构和ISA之间的解耦合，这样将RISC-V改成MIPS工作量会降低很多。得到MIPS版本的CPU目的在于采用相同的微结构可以客观的对比两个ISA的优劣。同时作为工作的一部分，性能的优化以及设计空间的搜索必不可少，期望能够在跑相同benchmark的情况下持平甚至超过ARM的Cortex A53的水平。
+
+\end{document}

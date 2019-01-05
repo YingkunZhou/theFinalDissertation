@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/Debian) (preloaded format=xelatex 2018.10.12)  22 DEC 2018 00:45
+This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/Debian) (preloaded format=xelatex 2018.10.12)  3 JAN 2019 15:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2074,20 +2074,20 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 ] [2]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 64.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 64.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 71.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 71.
 
 (./opening_report.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 64.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 64.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 64.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 71.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 71.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 71.
  ) 
 Here is how much of TeX's memory you used:
- 39538 strings out of 493007
- 792772 string characters out of 6136718
- 841866 words of memory out of 5000000
- 43026 multiletter control sequences out of 15000+600000
- 537051 words of font info for 63 fonts, out of 8000000 for 9000
+ 39544 strings out of 493007
+ 792840 string characters out of 6136718
+ 842358 words of memory out of 5000000
+ 43031 multiletter control sequences out of 15000+600000
+ 537059 words of font info for 64 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  55i,6n,74p,10465b,339s stack positions out of 5000i,500n,10000p,200000b,80000s
 

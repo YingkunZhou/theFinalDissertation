@@ -44,13 +44,32 @@
 \section*{0.Opening}
 我一直有个比喻在计算机领域，体系结构者扮演的是上帝的角色。上帝造万物，制规律，但却察觉不到。体系结构不就是如此吗，人们只关注其上跑的应用如否满足自己的需求，是否流畅(哪怕这个体系结构的ISA再烂，比如Intel)，如果不是计算机系的人，根本不会关注其背后的规律，何种指令以何种方式被执行。而操作体统犹如国王，国王管理着一切，当然国王也被叫做天子，因为是和上帝紧紧绑定的。而当今世界的三大国家为Windows, MacOS, Linux. 一般人们也不会感受到国家的存在，但是如果跨国的话，有时候就能够鲜明的感受到不同国家的区别。软件犹如国家的臣民，国家的机构必须遵从国家的规章制度，遵从内核调度，采用系统调用，跨国公司也概莫能外。编译器则是使者，沟通着天子，臣民与上帝。这个也很好理解，高级语言要转化为机器码才能够被执行。本科的阶段没有发论文的打算，一是体系结构这个领域十年磨一剑，二是想在本科阶段做做基础性的工作，打好以后研究的基础。
 
-\section*{1.Background}
+\section{Background and the state of art}
 体系结构领域出现了一股不可忽视的力量，其影响力将不啻OS领域的Linux，这就是risc-v。而我选择risc-v作为本科毕业设计的大的框架背景也是处于如下几个方面的考虑。
-\begin{itemize}
-	\item 在今年的龙芯杯中，自己设计的CPU以及在上面做的software stack的工作虽然侥幸获得了第一，但是
-\end{itemize}
+% \begin{itemize}
+% 	\item 在今年的龙芯杯中，自己设计的CPU以及在上面做的software stack的工作虽然侥幸获得了第一，但是
+% \end{itemize}
 
-\section*{2.language and logic}
+\section{language and representation}
+\subsection{Verilog}
+
+\subsection{scala}
+
+\subsection{sbt compile environment}
+
+\subsection{chisel}
+
+\section{RTL model and logic}
+
+\subsection{instruction fetch}
+
+\subsection{branch prediction}
+
+\subsection{multi-issue \& out-of-order pipeline}
+
+\subsection{title}
+
+
 首先语言的更高层次化是为了代码的简洁与复用，换言之就是由编译器来做琐碎的事情，从而解放人去更多的思考逻辑的事。但是语言的更高层次化也不应该提高代码的逻辑复杂密度。不得不承认，从C到C++以及Java，代码的逻辑复杂密度有所提高，C是简单的二层逻辑--global \& function local; 面向对象则是各种类的继承，抽象，方法的多态辅以各种一时难以理解的$ \lambda $-函数，iteration迭代，代码结构难以trace。如果代码框架是自己写的，那自然非常happy，因为编译器帮你做了很多琐碎的事情，但是旁人如果想修改一开始就非常头疼(举个最简单的例子，C代码中如果你想标准输出，想都不用想直接调用printf，但是Java中呢，你就必须得知道print函数是在哪个class中，那个class又是在哪个package中，像我初学Java的时候真的是每一个想调用print的时候就必定会查google；还有一个毛病就是C可以GDB，当然C++也可以GDB，但调起来就有些头疼了，有时候你根本不知道代码会什么会跳到那里(就是前面说的难以trace)，Java的话貌似都没有GDB这么一说，每次我都用print大法)。
 
 言归正传，但是面向对象语言所付出的这些代价都是值得的，尤其是在硬件逻辑的编写领域。为什么这么说呢？现在任给你一张CPU的架构图，一定是一些方框的逻辑组合，这些方框又是什么呢？就是模块，既然是模块，那么目前最好的刻画方式就是面向对象的语言。我一直很好奇为什么我们能够忍受这么多年的Verilog，难道高层的语言解决不了的电路的逻辑吗？一开始我是这么认为的，因为sequential circuit 的刻画就像是盘亘在高级语言上的一座大山, 如果仔细一想，哪有语言想要去刻画reg。但是直到接触了chisel，方才惊呼伯克利体系结构的这个上帝高实在是高。让人钦佩的是这个上帝同时精通使者的工作，使得在刻画逻辑和规律的时候更加游刃有余。
