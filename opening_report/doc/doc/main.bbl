@@ -1,0 +1,48 @@
+\begin{thebibliography}{1}
+
+\bibitem{user}
+Krste~Asanović Andrew~Waterman.
+\newblock {\em The RISC-V Instruction Set Manual Volume I: User-Level ISA
+  Document Version 2.2}, May 2017.
+
+\bibitem{privileged}
+Krste~Asanović Andrew~Waterman.
+\newblock {\em The RISC-V Instruction Set Manual Volume II: Privileged
+  Architecture Privileged Architecture Version 1.10 Document Version 1.10}, May
+  2017.
+
+\bibitem{Celio:EECS-2017-157}
+Christopher Celio, Pi-Feng Chiu, Borivoje Nikolic, David~A. Patterson, and
+  Krste Asanović.
+\newblock Boom v2: an open-source out-of-order risc-v core.
+\newblock Technical Report UCB/EECS-2017-157, EECS Department, University of
+  California, Berkeley, Sep 2017.
+
+\bibitem{reader}
+Andrew~Waterman David~Patterson.
+\newblock {\em The RISC-V Reader: An Open Architecture Atlas Beta Edition,
+  0.0.1}.
+\newblock Oct 2017.
+
+\bibitem{chisel}
+John~Wawrzynek Jonathan~Bachrach, Krste~Asanović.
+\newblock Chisel 3.0 tutorial (beta).
+\newblock Technical report, EECS Department, UC Berkeley, Jan 2017.
+
+\bibitem{alpha}
+R.~E. Kessler.
+\newblock The alpha 21264 microprocessor.
+\newblock Technical report, Compaq Computer Corporation, 1999.
+
+\bibitem{firrtl}
+Jonathan~Bachrach Patrick S.~Li, Adam M.~Izraelevitz.
+\newblock Specification for the firrtl language.
+\newblock Technical report, EECS Department, University of California,
+  Berkeley, Sep 2018.
+
+\bibitem{mips}
+Kenneth~C. Yeager.
+\newblock The mips rio000 superscalar microproce.
+\newblock Technical report, Silicon Graphics, Inc., 1996.
+
+\end{thebibliography}

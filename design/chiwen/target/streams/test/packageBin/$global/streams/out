@@ -1,0 +1,33 @@
+[0m[[0m[0minfo[0m] [0m[0mPackaging /home/albert/CPU/theFinalDissertation/design/chiwen/target/scala-2.11/chiwen_2.11-3.1.5-tests.jar ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mInput file mappings:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	utils/TutorialRunner.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/albert/CPU/theFinalDissertation/design/chiwen/target/scala-2.11/test-classes/utils/TutorialRunner.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	utils/TutorialRunner$$anonfun$apply$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/albert/CPU/theFinalDissertation/design/chiwen/target/scala-2.11/test-classes/utils/TutorialRunner$$anonfun$apply$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	core/DecoderTest$$anonfun$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/albert/CPU/theFinalDissertation/design/chiwen/target/scala-2.11/test-classes/core/DecoderTest$$anonfun$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	core/Launcher$$anonfun$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/albert/CPU/theFinalDissertation/design/chiwen/target/scala-2.11/test-classes/core/Launcher$$anonfun$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	utils[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/albert/CPU/theFinalDissertation/design/chiwen/target/scala-2.11/test-classes/utils[0m
+[0m[[0m[0mdebug[0m] [0m[0m	core/Launcher$$anonfun$1$$anonfun$apply$2.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/albert/CPU/theFinalDissertation/design/chiwen/target/scala-2.11/test-classes/core/Launcher$$anonfun$1$$anonfun$apply$2.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	utils/TutorialRunner$$anonfun$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/albert/CPU/theFinalDissertation/design/chiwen/target/scala-2.11/test-classes/utils/TutorialRunner$$anonfun$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	core[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/albert/CPU/theFinalDissertation/design/chiwen/target/scala-2.11/test-classes/core[0m
+[0m[[0m[0mdebug[0m] [0m[0m	utils/TutorialRunner$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/albert/CPU/theFinalDissertation/design/chiwen/target/scala-2.11/test-classes/utils/TutorialRunner$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	utils/TutorialRunner$$anonfun$apply$2.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/albert/CPU/theFinalDissertation/design/chiwen/target/scala-2.11/test-classes/utils/TutorialRunner$$anonfun$apply$2.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	core/Launcher.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/albert/CPU/theFinalDissertation/design/chiwen/target/scala-2.11/test-classes/core/Launcher.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	core/Launcher$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/albert/CPU/theFinalDissertation/design/chiwen/target/scala-2.11/test-classes/core/Launcher$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	core/Launcher$$anonfun$1$$anonfun$apply$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/albert/CPU/theFinalDissertation/design/chiwen/target/scala-2.11/test-classes/core/Launcher$$anonfun$1$$anonfun$apply$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	core/DecoderTest.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/albert/CPU/theFinalDissertation/design/chiwen/target/scala-2.11/test-classes/core/DecoderTest.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	core/DecoderTest$$anonfun$1$$anonfun$apply$mcZI$sp$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/albert/CPU/theFinalDissertation/design/chiwen/target/scala-2.11/test-classes/core/DecoderTest$$anonfun$1$$anonfun$apply$mcZI$sp$1.class[0m
+[0m[[0m[0minfo[0m] [0m[0mDone packaging.[0m
