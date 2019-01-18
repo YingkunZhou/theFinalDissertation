@@ -1,0 +1,22 @@
+- Fill(32, out(31))
+- Cat(Fill(32, out(31)), out(31,0))
+- require(xLen == 64)
+- Reverse(shout_r)
+- Mux()
+- PriorityMux()
+- FillInterleaved()
+- Valid()
+- Flipped
+- Pipe
+- OHToUInt()
+- UIntToOH()
+- RegEnable()
+- Queue()
+- withReset()
+- QueueIO()
+- PriorityMux()
+- PriorityEncoder()
+- Vec... .head
+- Seq.tabulate() {}
+- match but not hardware
+- MuxCase()

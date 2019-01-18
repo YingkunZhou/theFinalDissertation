@@ -1,4 +1,4 @@
-[0m[[0m[31merror[0m] [0m[0m/home/albert/CPU/theFinalDissertation/design/chiwen/src/main/scala/core/InstDecoder.scala:89:1: expected class or object definition[0m
-[0m[[0m[31merror[0m] [0m[0mClass RegInfo extends Bundle {[0m
-[0m[[0m[31merror[0m] [0m[0m^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/albert/CPU/theFinalDissertation/design/chiwen/src/main/scala/core/InstDecoder.scala:445:42: ')' expected but '}' found.[0m
+[0m[[0m[31merror[0m] [0m[0m  printf(p"inst = 0x${Hexadecimal(io.inst}\n")[0m
+[0m[[0m[31merror[0m] [0m[0m                                         ^[0m
 [0m[[0m[31merror[0m] [0m[0mone error found[0m

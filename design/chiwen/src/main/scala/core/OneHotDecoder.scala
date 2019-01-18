@@ -2,7 +2,7 @@ package core
 
 import chisel3._
 
-class OneHotDecoder(w: Int) extends Module {
+class OneHotDecoder(val w: Int) extends Module {
   val io = IO(new Bundle {
     val in = Input(UInt(w.W))
     val out = Output(UInt(math.pow(2,w).toInt.W))
@@ -14,4 +14,6 @@ class OneHotDecoder(w: Int) extends Module {
   for (i <- 0 until pow2) bools(i) := (io.in === i.U)
 
   io.out := bools.asUInt()
+//  printf(p"myUInt = 0x${Hexadecimal(io.out)}\n")
+
 }

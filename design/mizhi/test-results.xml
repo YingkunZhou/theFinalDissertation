@@ -1,0 +1,93 @@
+<testsuite name="solutions" timestamp="2019-01-17T22:49:50" time="0" hostname="zhou" tests="45" failures="0" errors="0">
+<properties></properties>
+<testcase name="emulator/rv32_3stage/output/rv32ui-p-lbu.out" classname="emulator" time="0">
+</testcase>
+<testcase name="emulator/rv32_3stage/output/rv32ui-p-add.out" classname="emulator" time="0">
+</testcase>
+<testcase name="emulator/rv32_3stage/output/rv32ui-p-slli.out" classname="emulator" time="0">
+</testcase>
+<testcase name="emulator/rv32_3stage/output/rv32ui-p-auipc.out" classname="emulator" time="0">
+</testcase>
+<testcase name="emulator/rv32_3stage/output/rv32ui-p-xori.out" classname="emulator" time="0">
+</testcase>
+<testcase name="emulator/rv32_3stage/output/rsort.riscv.out" classname="emulator" time="0">
+</testcase>
+<testcase name="emulator/rv32_3stage/output/rv32ui-p-sll.out" classname="emulator" time="0">
+</testcase>
+<testcase name="emulator/rv32_3stage/output/rv32ui-p-slti.out" classname="emulator" time="0">
+</testcase>
+<testcase name="emulator/rv32_3stage/output/rv32ui-p-simple.out" classname="emulator" time="0">
+</testcase>
+<testcase name="emulator/rv32_3stage/output/rv32ui-p-jal.out" classname="emulator" time="0">
+</testcase>
+<testcase name="emulator/rv32_3stage/output/qsort.riscv.out" classname="emulator" time="0">
+</testcase>
+<testcase name="emulator/rv32_3stage/output/rv32ui-p-fence_i.out" classname="emulator" time="0">
+</testcase>
+<testcase name="emulator/rv32_3stage/output/rv32ui-p-sh.out" classname="emulator" time="0">
+</testcase>
+<testcase name="emulator/rv32_3stage/output/rv32ui-p-and.out" classname="emulator" time="0">
+</testcase>
+<testcase name="emulator/rv32_3stage/output/rv32ui-p-bne.out" classname="emulator" time="0">
+</testcase>
+<testcase name="emulator/rv32_3stage/output/rv32ui-p-beq.out" classname="emulator" time="0">
+</testcase>
+<testcase name="emulator/rv32_3stage/output/rv32ui-p-xor.out" classname="emulator" time="0">
+</testcase>
+<testcase name="emulator/rv32_3stage/output/rv32ui-p-ori.out" classname="emulator" time="0">
+</testcase>
+<testcase name="emulator/rv32_3stage/output/rv32ui-p-andi.out" classname="emulator" time="0">
+</testcase>
+<testcase name="emulator/rv32_3stage/output/multiply.riscv.out" classname="emulator" time="0">
+</testcase>
+<testcase name="emulator/rv32_3stage/output/rv32ui-p-bgeu.out" classname="emulator" time="0">
+</testcase>
+<testcase name="emulator/rv32_3stage/output/median.riscv.out" classname="emulator" time="0">
+</testcase>
+<testcase name="emulator/rv32_3stage/output/rv32ui-p-lb.out" classname="emulator" time="0">
+</testcase>
+<testcase name="emulator/rv32_3stage/output/vvadd.riscv.out" classname="emulator" time="0">
+</testcase>
+<testcase name="emulator/rv32_3stage/output/rv32ui-p-addi.out" classname="emulator" time="0">
+</testcase>
+<testcase name="emulator/rv32_3stage/output/rv32ui-p-slt.out" classname="emulator" time="0">
+</testcase>
+<testcase name="emulator/rv32_3stage/output/rv32ui-p-sw.out" classname="emulator" time="0">
+</testcase>
+<testcase name="emulator/rv32_3stage/output/rv32mi-p-scall.out" classname="emulator" time="0">
+</testcase>
+<testcase name="emulator/rv32_3stage/output/rv32ui-p-blt.out" classname="emulator" time="0">
+</testcase>
+<testcase name="emulator/rv32_3stage/output/rv32ui-p-sub.out" classname="emulator" time="0">
+</testcase>
+<testcase name="emulator/rv32_3stage/output/rv32ui-p-srai.out" classname="emulator" time="0">
+</testcase>
+<testcase name="emulator/rv32_3stage/output/rv32ui-p-bge.out" classname="emulator" time="0">
+</testcase>
+<testcase name="emulator/rv32_3stage/output/rv32ui-p-lhu.out" classname="emulator" time="0">
+</testcase>
+<testcase name="emulator/rv32_3stage/output/rv32ui-p-lui.out" classname="emulator" time="0">
+</testcase>
+<testcase name="emulator/rv32_3stage/output/rv32ui-p-or.out" classname="emulator" time="0">
+</testcase>
+<testcase name="emulator/rv32_3stage/output/rv32mi-p-illegal.out" classname="emulator" time="0">
+</testcase>
+<testcase name="emulator/rv32_3stage/output/rv32mi-p-csr.out" classname="emulator" time="0">
+</testcase>
+<testcase name="emulator/rv32_3stage/output/rv32ui-p-sra.out" classname="emulator" time="0">
+</testcase>
+<testcase name="emulator/rv32_3stage/output/rv32mi-p-sbreak.out" classname="emulator" time="0">
+</testcase>
+<testcase name="emulator/rv32_3stage/output/rv32ui-p-jalr.out" classname="emulator" time="0">
+</testcase>
+<testcase name="emulator/rv32_3stage/output/rv32ui-p-lh.out" classname="emulator" time="0">
+</testcase>
+<testcase name="emulator/rv32_3stage/output/rv32ui-p-sb.out" classname="emulator" time="0">
+</testcase>
+<testcase name="emulator/rv32_3stage/output/rv32ui-p-lw.out" classname="emulator" time="0">
+</testcase>
+<testcase name="emulator/rv32_3stage/output/rv32ui-p-bltu.out" classname="emulator" time="0">
+</testcase>
+<testcase name="emulator/rv32_3stage/output/towers.riscv.out" classname="emulator" time="0">
+</testcase>
+</testsuite>

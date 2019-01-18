@@ -1,0 +1,2 @@
+test:runMain core.Launcher Decoder --backend-name verilator
+test:runMain core.Launcher Decoder --display-base 16
