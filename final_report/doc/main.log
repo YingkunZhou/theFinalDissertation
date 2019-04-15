@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/Debian) (preloaded format=xelatex 2018.10.12)  13 APR 2019 21:50
+This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/Debian) (preloaded format=xelatex 2018.10.12)  15 APR 2019 23:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2280,22 +2280,24 @@ Package microtype Warning: One or more slots in the configuration are unknown.
 (microtype)                See the documentation for details (the note
 (microtype)                on `xeCJK' in section 9: `Hints and caveats').
 
+[3] [4] [5]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 58.
+(hyperref)                removing `\@ifnextchar' on input line 90.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\widthof' on input line 58.
+(hyperref)                removing `\widthof' on input line 90.
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 67.
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+[6]
+LaTeX Font Info:    Try loading font information for U+msa on input line 99.
+ (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 67.
+LaTeX Font Info:    Try loading font information for U+msb on input line 99.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -2306,67 +2308,71 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-cmr.cfg
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
 (RS)
-) [3]
+)
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 71.
+(hyperref)                removing `\@ifnextchar' on input line 103.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\widthof' on input line 71.
+(hyperref)                removing `\widthof' on input line 103.
 
-[4] [5] [6] [7] [8] [9]
+[7] [8] [9] [10] [11] [12]
 File: figs/pipeline.png Graphic file (type bmp)
 <figs/pipeline.png>
+ [13]
 LaTeX Font Info:    Font shape `T1/fvm/m/n' will be
-(Font)              scaled to size 7.38007pt on input line 172.
+(Font)              scaled to size 7.38007pt on input line 204.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `fvm' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [10] [11] [12] [13] [14] [15]
+ [14] [15] [16] [17] [18]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 336.
+(hyperref)                removing `\@ifnextchar' on input line 368.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\widthof' on input line 336.
+(hyperref)                removing `\widthof' on input line 368.
 
-[16]
+[19]
 File: figs/btb1.png Graphic file (type bmp)
 <figs/btb1.png>
+ [20]
 File: figs/btb2.png Graphic file (type bmp)
 <figs/btb2.png>
- [17]
+ [21]
 File: figs/btb3.png Graphic file (type bmp)
 <figs/btb3.png>
- [18] [19]
+ [22]
 File: figs/fifo.png Graphic file (type bmp)
 <figs/fifo.png>
 File: figs/fifotable.png Graphic file (type bmp)
 <figs/fifotable.png>
- [20]
+ [23]
 File: figs/frontqueue.png Graphic file (type bmp)
 <figs/frontqueue.png>
- [21]
+ [24]
 File: figs/predqueue.png Graphic file (type bmp)
 <figs/predqueue.png>
+ [25]
 File: figs/instqueue.png Graphic file (type bmp)
 <figs/instqueue.png>
- [22] [23] [24]
+ [26] [27]
 File: figs/branchqueue.png Graphic file (type bmp)
 <figs/branchqueue.png>
+ [28]
 File: figs/loadstqueue.png Graphic file (type bmp)
 <figs/loadstqueue.png>
- [25] [26]
+ [29] [30]
 File: figs/issue.png Graphic file (type bmp)
 <figs/issue.png>
- [27] [28] [29]
+ [31] [32] [33]
 File: figs/fwdbwd.png Graphic file (type bmp)
 <figs/fwdbwd.png>
- [30]
-[31]
+
+[34] [35]
 File: zhongqi.pdf Graphic file (type pdf)
 <use zhongqi.pdf>
 File: zhongqi.pdf Graphic file (type pdf)
@@ -2375,28 +2381,28 @@ File: zhongqi.pdf Graphic file (type pdf)
 <use zhongqi.pdf, page 3>
 File: zhongqi.pdf Graphic file (type pdf)
 <use zhongqi.pdf, page 3>
- [32]
+ [36]
 File: zhongqi.pdf Graphic file (type pdf)
 <use zhongqi.pdf, page 3>
 File: zhongqi.pdf Graphic file (type pdf)
 <use zhongqi.pdf, page 3>
 File: zhongqi.pdf Graphic file (type pdf)
 <use zhongqi.pdf, page 3>
- [33] [34]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 588.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 588.
+ [37] [38]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 620.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 620.
  (./main.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 588.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 588.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 588.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 620.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 620.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 620.
  ) 
 Here is how much of TeX's memory you used:
- 45287 strings out of 493007
- 909564 string characters out of 6136718
- 1019965 words of memory out of 5000000
- 48622 multiletter control sequences out of 15000+600000
+ 45288 strings out of 493007
+ 909578 string characters out of 6136718
+ 1028751 words of memory out of 5000000
+ 48623 multiletter control sequences out of 15000+600000
  569424 words of font info for 72 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 55i,19n,74p,10442b,1842s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 55i,19n,74p,10442b,1786s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on main.pdf (34 pages).
+Output written on main.pdf (38 pages).
