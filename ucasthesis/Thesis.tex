@@ -40,7 +40,179 @@
 %- [list]% provide enhanced list environments for algorithm and coding
 %- [math]% enable some extra math packages
 \usepackage{Style/artracom}% user defined commands
+\usepackage{color}
+\usepackage{adjustbox}
+\usepackage{tikz}
+\usetikzlibrary{automata,positioning, arrows}
+\usetikzlibrary{shapes}
+\usetikzlibrary{positioning, quotes}
+\usepackage[usestackEOL]{stackengine}
+\lstdefinelanguage{scala}{
+	morekeywords={abstract,case,catch,class,def,%
+		do,else,extends,false,final,finally,%
+		for,if,implicit,import,match,mixin,%
+		new,null,object,override,package,%
+		private,protected,requires,return,sealed,%
+		super,this,throw,trait,true,try,%
+		type,val,var,while,with,yield},
+	sensitive=true,
+	morecomment=[l]{//},
+	morecomment=[n]{/*}{*/},
+	morestring=[b]",
+	morestring=[b]',
+	morestring=[b]"""
+}
 
+\usepackage{pgfplotstable}
+\pgfplotsset{
+	percentage plot/.style={
+		point meta=explicit,
+		nodes near coords align=vertical,
+		yticklabel=\pgfmathprintnumber{\tick}\,$\%$,
+		ymin=0,
+		ymax=100,
+		enlarge y limits={upper,value=0},
+		visualization depends on={y \as \originalvalue}
+	},
+	percentage series/.style={
+		table/y expr=\thisrow{#1},table/meta=#1
+	}
+}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+% Default settings for code listings
+\lstset{frame=tb,
+	language=scala,
+	aboveskip=0mm,
+	belowskip=-5mm,
+	showstringspaces=false,
+	columns=fixed, % basewidth=\mybasewidth,
+	basicstyle={\footnotesize\ttfamily},
+	numbers=none,
+	numberstyle=\footnotesize\color{gray},
+	% identifierstyle=\color{red},
+	keywordstyle=\color{blue},
+	commentstyle=\color{dkgreen},
+	stringstyle=\color{mauve},
+	frame=single,
+	breaklines=true,
+	breakatwhitespace=true,
+	procnamekeys={def, val, var, class, trait, object, extends},
+	procnamestyle=\ttfamily\color{red},
+	tabsize=2
+}
+
+\lstnewenvironment{scala}[1][]
+{\lstset{language=scala,frame=none,#1}}
+{}
+
+\usepackage{pgfplots}
+\definecolor{bblue}{HTML}{4F81BD}
+\definecolor{rred}{HTML}{C0504D}
+\definecolor{ggreen}{HTML}{9BBB59}
+\definecolor{ppurple}{HTML}{9F4C7C}
+\usetikzlibrary{patterns}
+\definecolor{rosso}{RGB}{220,57,18}
+\definecolor{giallo}{RGB}{255,153,0}
+\definecolor{blu}{RGB}{102,140,217}
+\definecolor{verde}{RGB}{16,150,24}
+\definecolor{viola}{RGB}{153,0,153}
+\definecolor{pink}{RGB}{220,100,100}
+
+\makeatletter
+
+\tikzstyle{chart}=[
+legend label/.style={font={\scriptsize},anchor=west,align=left},
+legend box/.style={rectangle, draw, minimum size=5pt},
+axis/.style={black,semithick,->},
+axis label/.style={anchor=east,font={\tiny}},
+]
+
+\tikzstyle{bar chart}=[
+chart,
+bar width/.code={
+	\pgfmathparse{##1/2}
+	\global\let\bar@w\pgfmathresult
+},
+bar/.style={very thick, draw=white},
+bar label/.style={font={\bf\small},anchor=north},
+bar value/.style={font={\footnotesize}},
+bar width=.75,
+]
+
+\tikzstyle{pie chart}=[
+chart,
+slice/.style={line cap=round, line join=round, very thick,draw=white},
+pie title/.style={font={\bf}},
+slice type/.style 2 args={
+	##1/.style={fill=##2},
+	values of ##1/.style={}
+}
+]
+
+\pgfdeclarelayer{background}
+\pgfdeclarelayer{foreground}
+\pgfsetlayers{background,main,foreground}
+
+\newcommand{\pie}[3][]{
+	\begin{scope}[#1]
+		\pgfmathsetmacro{\curA}{90}
+		\pgfmathsetmacro{\r}{1}
+		\def\c{(0,0)}
+		\node[pie title] at (90:1.3) {#2};
+		\foreach \v/\s in{#3}{
+			\pgfmathsetmacro{\deltaA}{\v/100*360}
+			\pgfmathsetmacro{\nextA}{\curA + \deltaA}
+			\pgfmathsetmacro{\midA}{(\curA+\nextA)/2}
+			
+			\path[slice,\s] \c
+			-- +(\curA:\r)
+			arc (\curA:\nextA:\r)
+			-- cycle;
+			%\pgfmathsetmacro{\d}{max((\deltaA * -(.5/50) + 1) , .5)}
+			
+			% Tests on de value of \deltaA allowing to assign different values to the style parameters
+			\pgfmathparse{\deltaA > 50 ? \r/2 : \r}
+			\edef\d{\pgfmathresult}
+			% If the pie portion is 5% or lower the label is plotted outside of the pie else it is plotted at half the radius
+			\pgfmathparse{\deltaA > 50 ? \d : \r+0.5/\v}
+			\edef\dd{\pgfmathresult}
+			% If the pie portion is 5% or lower the path is plotted
+			\pgfmathparse{\deltaA > 50 ? "none" : "black"}
+			\edef\linkcolor{\pgfmathresult}
+			\pgfmathparse{\deltaA > 50 ? "none" : "white"}
+			\edef\fillcolor{\pgfmathresult}
+			% These last parameters allow to place the label differently around the node depending on the value of \deltaA
+			\pgfmathparse{\deltaA > 50 ? 0 : 1}
+			\edef\pos{\pgfmathresult}
+			\pgfmathparse{\deltaA > 50 ? 0 : 5}
+			\edef\shiftA{\pgfmathresult}
+			\pgfmathparse{\deltaA > 50 ? "center" : "west"}
+			\edef\anchor{\pgfmathresult}
+			
+			\begin{pgfonlayer}{foreground}
+			%\path \c -- node[pos=\d,pie values,values of \s]{$\v\%$} +(\midA:\r);
+			\path[draw=\linkcolor] (\midA:\d) --  (\midA:\dd) -- node[pos=\pos,pie values,values of \s,draw=none,fill=\fillcolor,inner sep=0pt,anchor=  \anchor]{$\v\%$}(\midA-\shiftA:\dd);
+			\end{pgfonlayer}
+			
+			\global\let\curA\nextA
+		}
+	\end{scope}
+}
+
+\newcommand{\legend}[2][]{
+	\begin{scope}[#1]
+		\path
+		\foreach \n/\s in {#2}
+		{
+			++(0,-10pt) node[\s,legend box] {} +(5pt,0) node[legend label] {\n}
+		}
+		;
+	\end{scope}
+}
 %---------------------------------------------------------------------------%
 %->> Document inclusion
 %---------------------------------------------------------------------------%
@@ -74,7 +246,7 @@
 %-
 \cleardoublepage%
 \appendix% initialize the environment
-\input{Tex/Appendix}% appendix content
+%\input{Tex/Appendix}% appendix content
 %-
 %-> Backmatter: bibliography, glossary, index
 %-
