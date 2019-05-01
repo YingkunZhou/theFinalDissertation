@@ -7,10 +7,12 @@
 %基于CAM的重命名表
 %更侧重微结构的设计
 
-通过章节\ref{chap:analysis}的分析，相比于单发射五级静态流水线再到双发射五级静态流水线，双发射乱序处理器后端对前端的阻塞大大降低了，但是目前分支预测正确率不高的几个程序运行效率都没有达到预期的提升。已经有很多具体的工作正在实施，但是很遗憾地来不及展示在本文中，如：
+通过第\ref{chap:analysis}章的分析，相比于单发射五级静态流水线再到双发射五级静态流水线，双发射乱序处理器后端对前端的阻塞大大降低了，但是目前分支预测正确率不高的几个程序运行效率都没有达到预期的提升。
+
+目前已经有很多具体的工作正在实施或者筹划中，但是很遗憾地来不及展示在本文中，如：
 \begin{enumerate}[label=(\arabic*)]
 	\item icache真正做到四路组相连的结构，每一路4KB。
-	\item 参考文献\cite{Alpha21264}和\cite{MIPS1996}，构建高效的内部内存系统(Inner Memory System).
+	\item 参考文献\citet{Alpha21264,MIPS1996}，构建高效的内部内存系统(Inner Memory System).
 	\item 处理器对外支持整套AXI接口，同时仿真平台也能够支持整套以AXI总线交互的外设，如带延迟的内存。乱序的引入很大程度上就是为了通过硬件的调度来隐藏访存延迟。一旦访存带有延迟，支持四路组相连的dcache，BIAN相比于顺序流水的CHIWEN和FUXI效率会高不少。会从研究的角度来看，实验结果更漂亮；同时从实际应用的角度来看，也更加具有实用性。
 	\item 参考章节\ref{subsec:ISA}中介绍RISC-V的特权部分，使BIAN处理器支持MMU和虚拟内存管理。
 	\item 尝试去移植在Rocket和BOOM中的仿真外设，真正做到系统的模拟仿真。
@@ -21,21 +23,21 @@
 		\bicaption{BIAN处理器整体框图，不包括访存单元并取消重命名阶段的旁路}{Block diagram of BIAN processor (not include load-store unit and remove the bypass in Rename Stage.)}
 		\label{fig:bian_over2}
 	\end{figure}
-	\item 正在尝试采用更为复杂的预测策略和数据结构如文献\cite{Celio:EECS-2018-151}提到的2bc-table、 TAGE预测器(见图\ref{fig:TAGE})；文献\cite{Alpha21264}提到的Local History Table.
+	\item 正在尝试采用更为复杂的预测策略和数据结构如文献\citet{Celio:EECS-2018-151}提到的2bc-table、 TAGE预测器(见图\ref{fig:TAGE})；文献\citet{Alpha21264}提到的Local History Table.
 	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=\linewidth]{tage_fig_4_1}
-		\bicaption{TAGE预测器。请求地址和全局历史会被输入各个表的所以哈希和标签位哈希函数。然后每个表都会提供它们的预测结果，最后选择拥有最长历史的表。表存储的历史按几何级数的逐表递增。\cite{Celio:EECS-2018-151}图4.1.}{The TAGE predictor. The requesting address and the global history are fed into each table’s index hash and tag hash functions. Each table provides its own prediction (or no prediction) and the table with the longest history wins. Each table has geometrically more history bits than the previous table. Figure 4.1 of \cite{Celio:EECS-2018-151}.}
+		\bicaption{TAGE预测器。请求地址和全局历史会被输入各个表的所以哈希和标签位哈希函数。然后每个表都会提供它们的预测结果，最后选择拥有最长历史的表。表存储的历史按几何级数的逐表递增。\citep{Celio:EECS-2018-151}图4.1.}{The TAGE predictor. The requesting address and the global history are fed into each table’s index hash and tag hash functions. Each table provides its own prediction (or no prediction) and the table with the longest history wins. Each table has geometrically more history bits than the previous table. Figure 4.1 of \citep{Celio:EECS-2018-151}.}
 		\label{fig:TAGE}
 	\end{figure}
-	\item 在目前BIAN的设计中，后端的队列的项数的设置都是凭着设计直觉的。正考虑修改各个队列的参数，通过仿真结果来找到各个队列参数最优解。而且出于之前针对rename级提出的两个解决方案带来的时序改善，会考虑多做几项分支跳转的状态回溯备份，并增加乱序执行的指令条数和物理寄存器堆项数。在不断提升处理器性能的同时，也对乱序处理器的设计空间有更深入的探索。
+	\item 在目前BIAN的设计中，后端各队列项数的设置都是凭着设计直觉的。正考虑修改各个队列的参数，通过仿真结果来找到各个队列参数最优解。而且出于之前针对rename级提出的两个解决方案带来的时序改善，会考虑多做几项分支跳转的状态回溯备份，并增加乱序执行的指令条数和物理寄存器堆项数。在不断提升处理器性能的同时，也对乱序处理器的设计空间有更深入的探索。
 \end{enumerate}
 	
 	除了一些具体的工作安排，还有一些更为遥远的展望，如：
 	\begin{enumerate}[label=(\arabic*)]
 		\item 通过完善的系统仿真验证，并移植成功Rocket外设和浮点运算部件。最后，能够在FPGA上运行一整套软件栈(如Linux操作系统和GCC编译器)，并能够进行SPEC2000/2006的性能测试，在性能上不输RISC-V的BOOM和ARM的Cortex A53，A57系列。
 		\item 实现双核的并行。
-		\item 目前国内的主流ISA还是MIPS，肯定会将目前的基于RISC-V的双发射乱序处理器原型机修改为基于MIPS指令集的版本。并且希望能够通过不懈的努力，有朝一日能够将自己的设计真正的流片出来，在实际中得到应用。
+		\item 目前国内自主研发主流的ISA还是MIPS，肯定会将目前的基于RISC-V的双发射乱序处理器原型机修改为基于MIPS的版本。并且希望能够通过不懈的努力，有朝一日能够将自己的设计真正的流片出来，在实际中得到应用。
 	\end{enumerate}
 	
 	

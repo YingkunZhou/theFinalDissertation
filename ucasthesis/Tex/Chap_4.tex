@@ -4,11 +4,11 @@
 
 \section{仿真实验平台}
 
-本科学习期间采用的指令集是MIPS32，实验课上设计的单发射五级静态流水线处理器是基于龙芯提供的实验平台。设计中经历的步骤程序有：\textbf{step1}: 仿真时与龙芯提供的标准CPU loogson132生成(打印)的写回级trace对自动化的逐拍比对$ \Rightarrow $\textbf{step2}: 若比对出现不同则停止仿真，通过看波形找到产生不同写回信息的原因，并修正之$ \Rightarrow $如此循环往复直到仿真调通$ \Rightarrow $\textbf{step3}: 之后再用Vivado的集成化工具综合布局布线$ \Rightarrow $\textbf{step4}: 最后生成bitstream --- 可以配置FPGA的格式文件用JTAG线下载至Xilinx公司的FPGA上，产生物理上预期的效果就算设计完成。需要注意的是为了简化，课上实验中的内存是使用板卡上的SRAM模拟的，并不是真正的内存。
+本科学习期间采用的指令集是MIPS32，实验课上设计的单发射五级静态流水线处理器是基于龙芯提供的实验平台。设计中经历的步骤程序有：\textbf{step1}: 仿真时与龙芯提供的处理器loogson132生成(打印)的写回级trace对自动化的逐拍比对$ \Rightarrow $\textbf{step2}: 若比对出现不同则停止仿真，通过看波形找到产生不同写回信息的原因，并修正之$ \Rightarrow $如此循环往复直到仿真调通$ \Rightarrow $\textbf{step3}: 之后再用Vivado的集成化工具综合布局布线$ \Rightarrow $\textbf{step4}: 最后生成bitstream --- 可配置FPGA的格式文件，用JTAG线下载至Xilinx公司的FPGA上，产生物理上预期的效果就算设计完成。需要注意的是为了简化，课上实验中的内存是使用板卡上的SRAM模拟的，并不是真正的内存。
 
 但是这样一套比较熟悉的平台，却很难将RISC-V移植进来。没有现成的可以用来比对的标准trace；Chisel代码内部逻辑变量没有很好的波形调试。所以原来的实验平台并不奏效。
 
-很自然会想到在RISC-V开源处理器仓库中有没有可以略加修改便可使用的设计验证平台，于是尝试着阅读了Rocket和BOOM的说明文档及其代码。BOOM外围的很多代码是复用Rocket的，意味着存在着一种可能性 --- 区分出BOOM处理器自身和复用的Rocket代码，找到两者之间的接口，然后把BOOM替换为自主设计的处理器核心。但是不得不说，阅读代码的过程非常痛苦。首先BOOM和Rocket都是达到工业级别的颇为成熟的大工程了，里面的文件众多，每个文件中又有不同的类，这些类之间又有着非常复杂的交互关系。其次这些处理器的设计者和Chisel编译器的设计者属于一个团队，里面灵活使用了很多Chisel和Scala中高级的语言特性来更为简洁，扩展性更强的描述电路，但是这些特性却是初学者一时很难理解的障碍。加之本设计的任务并不是在BOOM的基础上加些模块或者特性，也不是修改BOOM来达到性能的提高(再者说，这样难免有抄袭之嫌)，任务在于自主设计出一款和BOOM一样完整的处理器内核。所以如果需要和BOOM一样复用Rocket的外围代码，然后去跑仿真验证，就必须清楚的了解其中的没一个细节，这一个熟悉的过程最少也需要几个月的时间，时间上不允许。
+很自然会想到在RISC-V开源处理器仓库中有没有可以略加修改便可使用的设计验证平台，于是尝试着阅读了Rocket和BOOM的说明文档及其代码。BOOM外围的很多代码是复用Rocket的，意味着存在着一种可能性 --- 区分出BOOM处理器自身和复用的Rocket代码，找到两者之间的接口，然后把BOOM替换为自主设计的处理器核心。但是不得不说，阅读代码的过程非常痛苦。首先BOOM和Rocket都是达到工业级别的颇为成熟的大工程了，里面的文件众多，每个文件中又有不同的类，这些类之间又有着非常复杂的交互关系。其次这些处理器的设计者和Chisel编译器的设计者属于一个团队，里面灵活使用了很多Chisel和Scala中高级的语言特性来更为简洁，扩展性更强的描述电路，但是这些特性却是初学者一时很难理解的障碍。加之本设计的任务并不是在BOOM的基础上添加模块，也不是修改BOOM的微结构来达到性能的提高(再者说，这样难免有抄袭之嫌)，任务在于自主设计出一款和BOOM一样完整的处理器内核。所以如果需要和BOOM一样复用Rocket的外围代码，然后去跑仿真验证，就必须清楚的了解其中的没一个细节，这一个熟悉的过程最少也需要几个月的时间，时间上不允许。
 
 最后采用的是加州大学伯克利分校体系结构课教学配套的适用于初学者的实验平台。如今，这个实验平台以及几个简单的能够在平台上运行的处理器核已经作为伯克利分校RISC-V开源仓库列表\href{https://github.com/ucb-bar/}{ucb-bar}中的\href{https://github.com/ucb-bar/riscv-sodor}{riscv-sodor仓库}开源了。另外，还有一个\href{https://gitter.im/librecores/riscv-sodor}{论坛社区}(\url{https://gitter.im/librecores/riscv-sodor})来答疑和解释该平台运行的机制。其机制可以简化地用图\ref{fig:platform}来概括。
 \begin{figure}[!htbp]
@@ -38,7 +38,7 @@
 
 运行的流程大致为：
 \begin{enumerate}[label=(\alph*)]
-	\item 在\texttt{chiwen}目录下运行sbt，Scala的构建工具或者说是集成化的编译器(Chisel的编译器实际上是在sbt中加入前端的Chisel语法树分析，和后端的Chisel到Verilog的转化规则)。然后选择处理器的工程名，这样sbt就会产生一个处理器的C++精确到周期的描述。为了简化这一步骤，如图\ref{fig:chiwen_L1}编写了一个脚本，执行命令{\footnotesize \verb|terminal| -> \verb|./setup.sh processor_name|}即可。这个脚本最后会把生成的Verilog代码和Chisel的中间层表示Firrtl放到\texttt{mizhi}的\texttt{emulator}目录中以处理器名为目录名的目录下。
+	\item 在\texttt{chiwen}目录下运行sbt，Scala的构建工具或者说是集成化的编译器(Chisel的编译器实际上是在sbt中加入前端的Chisel语法树分析，和后端的Chisel到Verilog的转化规则)。然后选择处理器的工程名，这样sbt就会产生一个处理器的C++精确到周期的描述。为了简化这一步骤，如图\ref{fig:chiwen_L1}编写了一个脚本，执行命令{\footnotesize \verb|terminal| -> \verb|./setup.sh <processor_name>|}即可。这个脚本最后会把生成的Verilog代码和Chisel的中间层表示Firrtl格式文件放到\texttt{mizhi}的\texttt{emulator}目录中以处理器命名的目录下。
 	\item 编译文件Makefile会用verilator软件将第一步得到的生成代码再生成和处理器对应的C++模拟器。
 	\item 编译文件Makefile会调用RISC-V的前端服务器(fesvr)在文件系统中为第二步得到的C++二进制模拟器打开一个socket，然后将RISC-V的二进制文件文件传输到目标处理器去执行，见图\ref{fig:platform}.
 	\item 在\texttt{mizhi}仓库里，已经提供了现成的测试程序包括指令功能测试和嵌入式benchmark程序性能测试，其中的benchmark程序集如表\ref{tab:benchmark}所示。所有测试程序位于\texttt{riscv- tests}目录中；自定义的测试程序，可以放至test目录中，见图\ref{fig:mizhi_L1}。 程序的编译用RV32I的GCC工具链标准编译。具体的命令封装在Makefile中，只需要输入命令{\footnotesize \verb|cd riscv-tests/isa| -> \verb|make|}生成指令测试二进制文件或者{\footnotesize \verb|cd riscv-tests/benchmarks| -> \verb|make|}生成性能测试的二进制文件。相应的，让目标处理器去仿真模拟执行只需要输入命令{\footnotesize \verb|make run-asm-tests|}或者{\footnotesize \verb|make run-bmarks-test|}就能运行指令功能测试或者benchmark性能测试。
@@ -114,7 +114,7 @@
 
 得益于前后端模式的强大优势，从单发射的CHIWEN过渡到超标量宽度为2的双发射五级静态流水线FUXI的过程非常平稳，代码基本上能够复用，不用做大的修改，开发的时间和调试的时间都大大缩短了。大致的修改如下：
 \begin{enumerate}[label=(\alph*)]
-	\item 后端的修改较为简单，把CHIWEN的后端用Chisel里Vec的写法重新写一遍，构建出两条并行的后端执行流水线。然后解决两条并行指令之间的如写后写、写后读、同时为跳转指令、同时为访存指令、同时为特权态指令等冲突，将后一条指令停住一个周期做成串行执行。不光写起来简单，调试的时候也不会出现很多的bug。
+	\item 后端的修改较为简单，把CHIWEN的后端用Chisel里Vec的写法重新写一遍，构建出两条并行的后端执行流水线。然后解决两条并行指令之间的如写后写、写后读、同时为跳转指令、同时为访存指令、同时为特权态指令等冲突。具体的解决做法是：将后一条指令停住一个周期做成串行执行。不光写起来简单，调试的时候也不会出现很多的bug。
 	\item 前端的修改是重点，也是难点，修改取指单元，参见章节\ref{subsec:fetchi}。同时，icache和分支预测单元都要做出修改，将输入PC信号(if/pc级)和输出指令信号(icache)或预测信号(分支预测单元)从单端口调整为双端口。
 \end{enumerate}
 
@@ -131,7 +131,7 @@
 正是采用了这种调试手段，从最开始的调试方式摸索阶段，用两周时间调通了带转移预测器的CHIWEN处理器，并且预测器的行为符合预期；再到用一周时间调通FUXI的前端，加上三天调通FUXI的后端；最后到用两周的时间(一周进行模块级的调试验证，一周进行整合系统的调试验证)调通了整合到FUXI前端的BIAN的后端。调试的时间的缩短使得在微结构设计上的时间变得相对充裕。
 
 \section{结果分析}
-表\ref{tab:inst_number}是各个程序的大致动态指令数，以及运行的时候执行的指令数。之所以是大致，是因为由于一些循环轮循和依赖执行周期的汇编代码的存在，不同的处理器执行各个程序的行为会出现偏差，指令数也就不一样。可以看出coremark, dhrystone, qsort和rsort的规模比较大，达到了十万量级；而median, multiply, towers, vvadd的规模较小，为万量级。
+表\ref{tab:inst_number}是各个程序的大致动态指令数，以及运行的时候执行的指令数。之所以是大致，是因为由于一些与串口打印交互的轮循和依赖执行周期的汇编代码的存在，不同的处理器执行各个程序的行为会出现偏差，指令数也就不一样。可以看出coremark, dhrystone, qsort和rsort的规模比较大，达到了十万量级；而median, multiply, towers, vvadd的规模较小，为万量级。
 \begin{table}[!htbp]
 	\bicaption{benchmark各个程序大致动态指令数。}{The approximate number of dynamic instructions of each program in the benchmark.}
 	\label{tab:inst_number}
@@ -238,7 +238,7 @@
 
 如图\ref{fig:ipc_result}，对比了3款处理器执行程序的性能(用IPC来衡量)。可以看到，最终结果并没有像预期一样，乱序双发射的BIAN执行各个程序都完美地优于顺序流水线架构下的CHIWEN和FUXI。BIAN对比单发射的CHIWEN，性能都是有所提高的。但是对比FUXI，却是互有胜负。dhystrone, qsort, rsort, vvadd处理器BIAN效率更高，而coremark, median, multiply, towers却是双发射顺序流水线的FUXI效率更高。
 
-分析原因，首先非常直观的一个观察是在BIAN劣于FUXI的4个程序中，跳转分支指令占比大于30\%的占了3席：coremark, median, multiply. 为了更为客观的观察分支跳转指令对处理器性能的影响，图\ref{fig:accurate_result}专门统计了3款处理器运行各个程序的转移预测正确率，BIAN的预测正确率在82\%以下的一共有4个程序：coremark, median, qsort, towers. 其中，和之前BIAN性能劣于FUXI的4个程序重合了3个。coremard和median更是跌到80\%一下。所以coremark和median在没有访存延迟的环境下，乱序结构不如顺序结构性能高的现象基本上可以归因于转移跳转指令高的同时转移预测正确率又很低。
+分析原因，首先非常直观的一个观察是在BIAN劣于FUXI的4个程序中，跳转分支指令占比大于30\%的占了3席：coremark, median, multiply. 为了更为客观的观察分支跳转指令对处理器性能的影响，图\ref{fig:accurate_result}专门统计了3款处理器运行各个程序的转移预测正确率，BIAN的预测正确率在82\%以下的一共有4个程序：coremark, median, qsort, towers. 其中，和BIAN性能劣于FUXI的4个程序重合了3个。coremard和median更是跌到80\%以下。所以coremark和median在没有访存延迟的环境下，乱序结构不如顺序结构性能高的现象基本上可以归因于转移跳转指令占比高的同时转移预测正确率又很低。
 
 \begin{table}[!htbp]
 	\bicaption{三款处理器执行各个程序的每周期指令数。}{the Instruction per Cycle of each program over three processors.}
@@ -327,7 +327,7 @@
 	\end{tabular}
 \end{table}
 
-从图\ref{fig:accurate_result}中还有一个有趣的现象是不同处理器执行同一程序的转移预测率是不同的。但是这三款处理器均是采用相同的数据结构和预测策略。产生这种现象的原因在于由于在流水线上，转移预测的数据结构的更新有反馈周期(解释见\ref{subsec:bj_unit})的延迟，不同微结构的反馈周期不同，产生的结果就是预测单元在结构未做更新时紧接着又要产生新的预测，所以会对预测结果产生小范围的波动效应。
+从图\ref{fig:accurate_result}中还有一个有趣的现象是不同处理器执行同一程序的转移预测率是不同的。但是这三款处理器均是采用相同的数据结构和预测策略。产生这种现象的原因在于由于在流水线上，转移预测的数据结构的更新有反馈周期(解释见\ref{subsec:bj_unit})的延迟，不同微结构的反馈周期不同，有些预测的结果就是预测单元在结构未做更新时产生的，所以会对预测结果产生小范围的波动效应。
 
 \begin{figure}[!htbp]
 	\centering
@@ -486,11 +486,11 @@
 	\end{tabular}
 \end{table}
 
-高分支跳转指令占比，低分支预测率只不过是乱序处理器性能不高的表面原因。考虑到FUXI和BIAN的转移正确预测率基本上保持一致，仅有小范围的波动，乱序处理器在执行这类程序性能不高的本质原因在于：乱序结构对转移预测正确率的敏感度比顺序要高，或者说转移预测正确率对乱序的微结构影响更大。为了量化地说明这一点，在3款处理器中同时关闭了两位饱和计数器和gshare的锦标赛逻辑，也即分支预测仅仅依靠两位饱和计数器。统计得到的IPC和跳转预测率分别如图\ref{fig:ipc_result_ruo}和图\ref{fig:accurate_result_ruo}。其中，灰色部分代表的是和原来没有关闭gshare的锦标赛逻辑相比数值上减少的部分。可以看出在BIAN和FUXI分支预测正确率的下降量相当时，BIAN的IPC比FUXI的下降得更多。证实了乱序结构对转移预测正确率更敏感的结论。
+高分支跳转指令占比，低分支预测率只不过是乱序处理器性能不高的表面原因。考虑到FUXI和BIAN的转移正确预测率基本上保持一致，仅有小范围的波动，乱序处理器在执行这类程序性能不高的本质原因在于：乱序结构对转移预测正确率的敏感度比顺序要高，或者说转移预测正确率对乱序的微结构影响更大。为了量化地说明这一点，在3款处理器中同时关闭了gshare算法预测技术以及锦标赛仲裁的逻辑，也即分支预测仅仅依靠两位饱和计数器。统计得到的IPC和跳转预测率分别如图\ref{fig:ipc_result_ruo}和图\ref{fig:accurate_result_ruo}。其中，灰色部分代表的是与原来没有关闭gshare的锦标赛逻辑相比数值上减少的部分。可以看出在BIAN和FUXI分支预测正确率的下降量相当时，BIAN的IPC比FUXI的下降得更多。证实了乱序结构对转移预测正确率更敏感的结论。
 
-图\ref{fig:accurate_result_ruo}还反映出了关闭gshare功能和锦标赛逻辑后，对coremark和qsort这两个程序的预测正确率影响不大。在BIAN中，coremark和qsort甚至出现了微量负增长波动的情况。这同样是一个非常有意思的现象。目前采用的10-bit全局历史和gshsare算法对于这两个程序影响不大说明了这两个程序对于短全局历史的规律性不强。这在代码逻辑上能够得到解释。在实验平台上，coremark一共循环执行了20次，其中分支逻辑占比最多的是字符串比较；qsort是快速排序，而快速排序又是著名的随机化算法。无论是字符串比较，还是快速排序，其跳转都是非常随机的，基本上没有什么规律(工业界对于coremark预测率的提高是依靠循环上千次的大循环加上长全局历史得到的，区别于实验中的小循环和短全局历史)，所以进一步的提高预测正确率从而提高乱序结构执行coremark和qsort的性能是困难的。
+图\ref{fig:accurate_result_ruo}还反映出了关闭gshare功能和锦标赛逻辑后，对coremark和qsort这两个程序的预测正确率影响不大。在BIAN中，coremark和qsort甚至出现了轻微的负增长波动。这同样是一个非常有意思的现象。目前采用的10-bit全局历史和gshsare算法对于这两个程序影响不大说明了这两个程序对于短全局历史的规律性不强。这在代码逻辑上能够得到解释。在实验平台上，coremark一共循环执行了20次，其中分支逻辑占比最多的是字符串比较；qsort是快速排序，而快速排序又是著名的随机化算法。无论是字符串比较，还是快速排序，其跳转都是非常随机的，基本上没有什么规律(工业界对于coremark预测率的提高是依靠循环上千次的大循环加上长全局历史得到的，区别于实验中的小循环和短全局历史)，所以进一步的提高预测正确率从而提高乱序结构执行coremark和qsort的性能是困难的。
 
-量化地析coremark和qsort的跳转行为。如图\ref{fig:cormark}所示，两条跳转指令的数量就占到所有跳转指令数量的2/3，而PC \texttt{0x80005920}对应的分支指令就占了误预测总数的超过六成。另外，如表\ref{tab:coremark}所示，对频率最高的几条跳转指令，两位饱和计数器加全局历史gshare的锦标赛预测策略误预测率都很高。qsort程序没有coremark那么极端，不过从图\ref{fig:qsort}和表\ref{tab:qsort}出现频率最高的几条分支指令PC，预测做的同样不好。
+量化地分析coremark和qsort的跳转行为。如图\ref{fig:cormark}所示，两条跳转指令的数量就占到所有跳转指令数量的2/3，而PC \texttt{0x80005920}对应的分支指令误预测数量更是占到误预测总数的超过六成。另外，如表\ref{tab:coremark}所示，对频率最高的几条跳转指令，两位饱和计数器加全局历史gshare的锦标赛预测策略误预测率都很高。qsort程序没有coremark那么极端，不过从图\ref{fig:qsort}和表\ref{tab:qsort}出现频率最高的几条分支指令PC，预测做的同样不好。
 
 \begin{figure}[!htbp]
 	\centering
@@ -662,12 +662,12 @@
 	
 对这些异常的现象进行量化分析，根本的原因还是在于前后端的交互效率上。如图\ref{fig:stall_rate}，统计了FUXI(顺序)和BIAN(乱序)后端阻塞从前端取回两条指令的占比。因为如果第一条指令阻塞了，第二条指令也会跟着阻塞，所以两路并行指令的被阻塞占比差可以很好地量化程序的串行度，差越大代表着程序的串行度越高。柱形图\ref{fig:stall_rate}中，FUXI两路指令在qsort一栏的高度差是最大的，所以qsort的串行度最高。而第二条指令(FUXI\#1)一旦被阻塞，FUXI的前端也会被阻塞，所以第二条指令被阻塞占比上的差距使得qsort和towers在FUXI的IPC结果中相差很大。
 
-第二个现象，multiply程序的IPC在FUXI中反常的高也是因为前端的供指因素。在图\ref{fig:stall_rate}中，multiply两条并行执行的被阻塞率都极低，程序的可并行度很高，所以虽然转移预测率只有90\%，但是在FUXI中的IPC却可以媲美rsort(rsort虽然转移预测正确率很高，但是其串行度也较高)。
+第二个现象，multiply程序的IPC在FUXI中反常的高也是因为前端的供指因素。在图\ref{fig:stall_rate}中，multiply两条并行执行的被阻塞率都极低，而且差距很小，程序的可并行度很高。所以虽然转移预测率只有90\%，但是在FUXI中的IPC却可以媲美rsort(rsort虽然转移预测正确率很高，但是其串行度也较高)。
 
-第三个现象，由于在BIAN中三个程序指令的被阻塞率都很低，所以问题不出在阻塞上。那么问题是不是出在前端的取指带宽上(每周期平均能够取回的指令数)。如图\ref{fig:bandwidth}所示，如果按照非对齐的取指，三个程序的取指效率差不多。如果按照对齐取指，那么反而coremark的取指效率是最低的。目前BIAN的设计中就是采用对其取指的。最后剩下的一种合理的解释是，相比coremark的并行度很高，qsort的并行度太低，而towers由于访存指令的占比太大，导致后后端对前端的阻塞及时也在5\%以下，但是也比coremark要高出$2 \sim 3$倍。
+第三个现象，由于在BIAN中三个程序指令的被阻塞率都很低，所以问题不出在阻塞上。那么问题是不是出在前端的取指带宽上(每周期平均能够取回的指令数)。如图\ref{fig:bandwidth}所示，如果按照非对齐的取指，三个程序的取指效率差不多。如果按照对齐取指，那么反而coremark的取指效率是最低的。目前BIAN的设计中采用的是对齐取指。最后剩下的一种合理的解释是，相比coremark较高的并行度，qsort的并行度太低；而towers由于访存指令的占比太大，导致后端对前端的阻塞虽然也在5\%以下，但是也比coremark要高出$2 \sim 3$倍，同时也是由于访存指令占比大，导致了load-to-use的分支指令的反馈周期变大，预测正确率的对towers的影响就比coremark更大。
 
 
-最后分析双宽度的前端是否需要做成非对齐取指的方式。虽然非对齐的方式在带宽上较高，但是却增加了逻辑和电路的复杂性。对齐与非对齐差距较大的如coremark和median。由图\ref{fig:inst_types}，两者均是高分支占比的程序；而且这些高分支占比的程序由图\ref{fig:accurate_result}，又是预测正确率很低。大量的指令被取回又被取消掉，导致最后的IPC很低。如图\ref{fig:ipc_result}，coremark接近1.05，median只有0.84，采用对齐取指方式，都会白白浪费很大的供指带宽。做成非对齐的方式，没有意义。
+最后分析双宽度的前端是否需要做成非对齐取指的方式。虽然非对齐的方式在带宽上较高，但是却增加了逻辑和电路的复杂性。对齐与非对齐差距较大的如coremark和median。由图\ref{fig:inst_types}，两者均是高分支占比的程序；而且这些高分支占比的程序由图\ref{fig:accurate_result}，又是预测正确率很低的。大量的指令被取回又被取消掉，导致最后的IPC很低。如图\ref{fig:ipc_result}，coremark接近1.05，median只有0.84，采用对齐取指方式，都会白白浪费很大的供指带宽。做成更激进的非对齐取指，没有意义。
 
 \begin{figure}[!htbp]
 	\centering
@@ -705,4 +705,4 @@
 
 \section{小结}
 
-整个实验平台采用有20个周期左右的随机取指延迟配以16KB的icache，以及无访存延迟的环境。通过量化的方法，分析和对比了影响乱序和顺序性能的几个要素，有转移预测正确率，动态执行的各类指令占比，前后端之间的指令阻塞比例，程序的串行度和前端的取指带宽。发现转移预测正确率对乱序处理器性能的影响极大；程序串行度也有不小的影响；取指的带宽相对于转移预测争取率和后端的执行效率是足够的，并不会称为性能瓶颈。
+整个实验平台采用有20个周期左右的随机取指延迟配以16KB的icache，以及无访存延迟的环境。通过量化的方法，分析和对比了影响乱序和顺序性能的几个要素，有转移预测正确率，动态执行的各类指令占比，前后端之间的指令阻塞比例，程序的串行度和前端的取指带宽。得出的结论是：转移预测正确率对乱序处理器性能的影响极大；程序串行度也有不小的影响；取指的带宽相对于转移预测争取率和后端的执行效率是足够的，并不会成为性能瓶颈。
