@@ -42,15 +42,15 @@
 \chapter*{摘\quad 要}\chaptermark{摘\quad 要}% 摘要标题
 \setcounter{page}{1}% 开始页码
 \pagenumbering{Roman}% 页码符号
-本文旨在分析探讨采用乱序、多发射、超标量技术的高性能通用处理器结构设计，以及对其性能的考量、权衡与取舍，并自主设计出一款能够运行嵌入式程序的乱序双发射处理器。为了有效的控制设计的复杂度，在较短的时间内设计出一款能够运行程序的乱序双发射处理器就必须有所简化。最后简化的方案如下：首先ISA指令集在32位架构的前提下选择了目前最为精简的RISC-V中已经被冻结的RV32I指令集；其次编写的语言采用由加州大学伯克利分校开发的Chisel语言，来提高设计的效率以及有效控制设计的复杂度。最后对比同样是自己设计的单发射五级静态流水和双发射五级静态流水架构，双发射乱序流水架构运行程序所需的周期数明显减少，从而性能有了显著的提高。同时，对benchmark中的各个性能测试程序自身指令特点和在不同架构下的执行行为作了细致的比较，量化地分析了影响性能的因素以及这些因素是如何抑制或者提高处理器性能的。
-
+本文旨在分析探讨采用乱序、多发射、超标量技术的高性能通用处理器结构设计，以及对其性能的考量、权衡与取舍，并自主设计出一款能够运行嵌入式程序的乱序双发射处理器。为了有效的控制设计的复杂度，在三个月的时间内设计出一款能够运行程序的乱序双发射处理器就必须有所简化。最后简化的方案如下：首先ISA指令集在32位架构的前提下选择了目前最为精简的RISC-V中已经被冻结的RV32I指令集；其次编写的语言采用由加州大学伯克利分校开发的Chisel语言，来提高设计的效率以及有效控制设计的复杂度。最后对比同样是自己设计的单发射五级静态流水和双发射五级静态流水架构，双发射乱序流水架构运行程序所需的周期数明显减少，从而性能有了显著的提高。同时，对benchmark中的各个性能测试程序自身指令特点和在不同架构下的执行行为作了细致的统计，量化地分析了影响性能的因素以及这些因素是如何抑制或者提高处理器性能的。
+%创新点：自主设计了乱序双发射的处理器核心，采用前中后端的架构模型，并引入了指令执行等级的划分。最后详细地量化分析了影响处理器性能的因素。在微结构上，对分支预测单元，分支跳转单元，访存单元做了自己的优化。
 \keywords{微处理器，乱序，双发射，RISC-V}% 中文关键词
 %-
 %-> 英文摘要
 %-
 \chapter*{Abstract}\chaptermark{Abstract}% 摘要标题
 
-This paper aims to build a totally self-designed microprocessor with out-of-order, superscalar and multi-issue micro-architecture features to enhance performances of executing programs especially in embedded system area. However, the microprocessor is very hard to implement. In order to control the complexity as will as being able to accomplish the design in this half year, some simplifications have been taken and the final design is as follows. Firstly, as one of the simplest 32-bit ISA, RV32I which is frozen by RISC-V has been chosen to be supported by the microprocessor. Secondly, because of the great ability of complexity control, Chisel which is designed and maintained by University of California, Berkeley has been chosen to be the programming language to design the microprocessor efficiently. In the end, the two-wide superscalar microprocessor with out-of-order execution has been developed successfully. And then, compared with single-issue and dual-issue five stage static pipeline processors, the execution performance of the out-of-order processor improved apparently. Finally, by analysis the dynamic trace of every programs after the processors executing them, several elements are found impacting the performance.
+This paper aimed to build a totally self-designed microprocessor with out-of-order, superscalar and multi-issue micro-architecture features to enhance performances of executing programs especially in embedded system area. However, it is very challenging to implement this microprocessor. In order to control the complexity as well as to accomplish the design within three months, some simplifications have been taken and the final design was as follows. Firstly, as one of the simplest 32-bit ISA, RV32I which is frozen by RISC-V has been chosen to be supported by the microprocessor. Secondly, because of the great ability of complexity control, Chisel, designed and maintained by University of California, Berkeley, has been selected as the programming language to design the microprocessor efficiently. After that, the two-wide superscalar microprocessor with out-of-order execution has been developed successfully. Compared with singleissue and dual-issue five stage static pipeline processors, the execution performance of the out-of-order processor improved apparently. Finally, through analyzing the dynamic trace of every programs after the processors executed them, several elements are found impacting the performance.
 
 \englishkeywords{Microprocessor, Out-of-order, Two-wide Superscalar, RISC-V}% 英文关键词
 %---------------------------------------------------------------------------%
