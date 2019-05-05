@@ -221,38 +221,38 @@ slice type/.style 2 args={
 %->> Document content
 %---------------------------------------------------------------------------%
 \begin{document}
-	%-
-	%-> Frontmatter: title page, abstract, content list, symbol list, preface
-	%-
-	\frontmatter% initialize the environment
-	\input{Tex/Frontpages}% title page, abstract, dedication
-	{% content list region
-		\linespread{1.2}% local line space
-		%\intotoc{\contentsname}% add link to contents table and bookmark
-		\tableofcontents% contents catalog
-		%\intotoc{\listfigurename}% add link to contents table and bookmark
-		\listoffigures% figures catalog
-		%\intotoc{\listtablename}% add link to contents table and bookmark
-		\listoftables% tables catalog
-	}
-	\input{Tex/Prematter}% list of symbols, preface content
-	%-
-	%-> Mainmatter
-	%-
-	\mainmatter% initialize the environment
-	\input{Tex/Mainmatter}% main content
-	%-
-	%-> Appendix
-	%-
-	\cleardoublepage%
-	\appendix% initialize the environment
-	%\input{Tex/Appendix}% appendix content
-	%-
-	%-> Backmatter: bibliography, glossary, index
-	%-
-	\backmatter% initialize the environment
-	\intotoc{\bibname}% add link to contents table and bookmark
-	\bibliography{Biblio/ref}% bibliography
-	\input{Tex/Backmatter}% other information
+%-
+%-> Frontmatter: title page, abstract, content list, symbol list, preface
+%-
+\frontmatter% initialize the environment
+\input{Tex/Frontpages}% title page, abstract, dedication
+{% content list region
+	\linespread{1.2}% local line space
+	%\intotoc{\contentsname}% add link to contents table and bookmark
+	\tableofcontents% contents catalog
+	%\intotoc{\listfigurename}% add link to contents table and bookmark
+	\listoffigures% figures catalog
+	%\intotoc{\listtablename}% add link to contents table and bookmark
+	\listoftables% tables catalog
+}
+\input{Tex/Prematter}% list of symbols, preface content
+%-
+%-> Mainmatter
+%-
+\mainmatter% initialize the environment
+\input{Tex/Mainmatter}% main content
+%-
+%-> Appendix
+%-
+\cleardoublepage%
+\appendix% initialize the environment
+%\input{Tex/Appendix}% appendix content
+%-
+%-> Backmatter: bibliography, glossary, index
+%-
+\backmatter% initialize the environment
+\intotoc{\bibname}% add link to contents table and bookmark
+\bibliography{Biblio/ref}% bibliography
+\input{Tex/Backmatter}% other information
 \end{document}
 %---------------------------------------------------------------------------%
