@@ -13,7 +13,7 @@
 \begin{enumerate}[label=(\arabic*)]
 	\item 指令高速缓存真正做到四路组相连的结构，每一路4KB。
 	\item 参考文献\citet{Alpha21264,MIPS1996}，构建高效的内部内存系统(Inner Memory System).
-	\item 处理器对外支持整套AXI接口，同时仿真平台也能够支持整套以AXI总线交互的外设，如带延迟的内存。乱序的引入很大程度上就是为了通过硬件的调度来隐藏访存延迟。一旦访存带有延迟，支持四路组相连的dcache，BIAN相比于顺序流水的CHIWEN和FUXI效率会高不少。从研究的角度来看，实验结果更漂亮；同时从实际应用的角度来看，也更加具有实用性。
+	\item 处理器对外支持整套AXI接口，同时仿真平台也能够支持整套以AXI总线交互的外设，如带延迟的内存。乱序的引入很大程度上就是为了通过硬件的调度来隐藏访存延迟。一旦访存带有延迟，支持四路组相连的数据高速缓存，BIAN相比于顺序流水的CHIWEN和FUXI效率会高不少。从研究的角度来看，实验结果更漂亮；同时从实际应用的角度来看，也更加具有实用性。
 	\item 参考章节\ref{subsec:ISA}中介绍RISC-V的特权部分，使BIAN处理器支持MMU和虚拟内存管理。
 	\item 尝试去移植在Rocket和BOOM中的仿真外设，真正做到系统的模拟仿真。
 	\item 在设计过程中，被诟病最多的一点是rename级的基于RAM形式的重命名表，加上旁路技术读寄存器堆的设计。这里，已经构思好了两部分的解决方案。第一，将重命名表从RAM形式改为CAM形式，CAM形式在后来的讨论中被证实是时序更好，面积更小的方案。第二，取消在rename阶段的旁路，见框图\ref{fig:bian_over2}。
@@ -27,13 +27,13 @@
 	\begin{figure}[!htbp]
 		\centering
 		\includegraphics[width=\linewidth]{tage_fig_4_1}
-		\bicaption{TAGE预测器。请求地址和全局历史会被输入各个表的所以哈希和标签位哈希函数。然后每个表都会提供它们的预测结果，最后选择拥有最长历史的表。表存储的历史按几何级数逐表递增。\citep{Celio:EECS-2018-151}图4.1.}{The TAGE predictor. The requesting address and the global history are fed into each table’s index hash and tag hash functions. Each table provides its own prediction (or no prediction) and the table with the longest history wins. Each table has geometrically more history bits than the previous table. Figure 4.1 of \citep{Celio:EECS-2018-151}.}
+		\bicaption{TAGE预测器。请求地址和全局历史会被输入各个表的索引哈希和标签位哈希函数。然后每个表都会提供它们的预测结果，最后选择拥有最长历史的表。表存储的历史按几何级数逐表递增。\citep{Celio:EECS-2018-151}图4.1.}{The TAGE predictor. The requesting address and the global history are fed into each table’s index hash and tag hash functions. Each table provides its own prediction (or no prediction) and the table with the longest history wins. Each table has geometrically more history bits than the previous table. Figure 4.1 of \citep{Celio:EECS-2018-151}.}
 		\label{fig:TAGE}
 	\end{figure}
 	\item 在目前BIAN的设计中，后端各队列项数的设置都是凭着设计直觉的。正考虑修改各个队列的参数，通过仿真结果来找到各个队列参数最优解。而且出于之前针对rename级提出的两个解决方案带来的时序改善，会考虑多做几项分支跳转的状态回溯备份，并增加乱序执行的指令条数和物理寄存器堆项数。在不断提升处理器性能的同时，也对乱序处理器的设计空间有更深入的探索。
 \end{enumerate}
 	
-	除了一些具体的工作安排，还有一些更为遥远的展望，如：
+	除了一些具体的工作安排，还有一些遥远的展望：
 	\begin{enumerate}[label=(\arabic*)]
 		\item 通过完善的系统仿真验证，并移植成功Rocket外设和浮点运算部件。最后，能够在FPGA上运行一整套软件栈(如Linux操作系统和GCC编译器)，并能够进行SPEC2000/2006的性能测试，在性能上不输RISC-V的BOOM和ARM的Cortex A53，A57系列。
 		\item 实现双核的并行。
