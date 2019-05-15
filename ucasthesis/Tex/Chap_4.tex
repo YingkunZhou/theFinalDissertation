@@ -41,7 +41,7 @@
 	\item 在\texttt{chiwen}目录下运行sbt，Scala的构建工具或者说是集成化的编译器(Chisel的编译器实际上是在sbt中加入前端的Chisel语法树分析，和后端的Chisel到Verilog的转化规则)。然后选择处理器的工程名，这样sbt就会产生一个处理器的C++精确到周期的描述。为了简化这一步骤，如图\ref{fig:chiwen_L1}编写了一个脚本，执行命令{\footnotesize \verb|terminal| -> \verb|./setup.sh <processor_name>|}即可。这个脚本最后会把生成的Verilog代码和Chisel的中间层表示Firrtl格式文件放到\texttt{mizhi}的\texttt{emulator}目录中以处理器命名的目录下。
 	\item 编译文件Makefile会用verilator软件将第一步得到的生成代码再生成和处理器对应的C++模拟器。
 	\item 编译文件Makefile会调用RISC-V的前端服务器(fesvr)在文件系统中为第二步得到的C++二进制模拟器打开一个socket，然后将RISC-V的二进制文件文件传输到目标处理器去执行，见图\ref{fig:platform}.
-	\item 在\texttt{mizhi}仓库里，已经提供了现成的测试程序包括指令功能测试和嵌入式benchmark程序性能测试，其中的benchmark程序集如表\ref{tab:benchmark}所示。所有测试程序位于\texttt{riscv-tests}目录中；自定义的测试程序，可以放至test目录中，见图\ref{fig:mizhi_L1}。 程序的编译用RV32I的GCC工具链标准编译。具体的命令封装在Makefile中，只需要输入命令{\footnotesize \verb|cd riscv-tests/isa| -> \verb|make|}生成指令测试二进制文件或者{\footnotesize \verb|cd riscv-tests/benchmarks| -> \verb|make|}生成性能测试的二进制文件。相应的，让目标处理器去仿真模拟执行只需要输入命令{\footnotesize \verb|make run-asm-tests|}或者{\footnotesize \verb|make run-bmarks-test|}就能运行指令功能测试或者benchmark性能测试。
+	\item 在\texttt{mizhi}仓库里，已经提供了现成的测试程序包括指令功能测试和嵌入式benchmark程序性能测试，其中的benchmark程序集如表\ref{tab:benchmark}所示。所有测试程序位于\texttt{riscv-tests}目录中；自定义的测试程序，可以放至test目录中，见图\ref{fig:mizhi_L1}. 程序的编译用RV32I的GCC工具链标准编译。具体的命令封装在Makefile中，只需要输入命令{\footnotesize \verb|cd riscv-tests/isa| -> \verb|make|}生成指令测试二进制文件或者{\footnotesize \verb|cd riscv-tests/benchmarks| -> \verb|make|}生成性能测试的二进制文件。相应的，让目标处理器去仿真模拟执行只需要输入命令{\footnotesize \verb|make run-asm-tests|}或者{\footnotesize \verb|make run-bmarks-test|}就能运行指令功能测试或者benchmark性能测试。
 	\item 最后如果通过，会在终端给出PASSED字样，否则就是FAILED来给出处理器的验证结果。大致的机理是Makefile会先用Spike，RISC-V的ISA级模拟器跑出一遍trace，然后比对处理器的输出结果。前端服务器(fesvr)也会通过debugIO通过访存来检测处理器的状态是否达到预期。不过存在着自动检测在FAILED时却给出PASSED的少见情况。针对这种情况，用python编写了一个脚本来比对待测试处理器产生的trace和Spike跑出的标准trace每一个周期的有效写回寄存器堆结果，或者也可以和sodor已经提供的几个简单处理器打印的trace做对比。这样就能严格保证处理器执行已有程序的正确性。
 \end{enumerate}
 
@@ -487,7 +487,7 @@
 
 \textbf{乱序结构对转移预测正确率的敏感度比顺序要高，或者说转移预测正确率对乱序的微结构影响更大。}
 
-为了量化地说明这一点，在3款处理器中同时关闭了gshare算法预测技术以及锦标赛仲裁的逻辑，也即分支预测仅仅依靠两位饱和计数器。统计得到的IPC和跳转预测率分别如图\ref{fig:ipc_result_ruo}和图\ref{fig:accurate_result_ruo}。其中，灰色部分代表的是与原来没有关闭gshare的锦标赛逻辑相比，数值上减少的部分。可以看出在BIAN和FUXI分支预测正确率的下降量相当时，BIAN的IPC比FUXI的下降得更多。证实了乱序结构对转移预测正确率更敏感的结论。
+为了量化地说明这一点，在3款处理器中同时关闭了gshare算法预测技术以及锦标赛仲裁的逻辑，也即分支预测仅仅依靠两位饱和计数器。统计得到的IPC和跳转预测率分别如图\ref{fig:ipc_result_ruo}和图\ref{fig:accurate_result_ruo}. 其中，灰色部分代表的是与原来没有关闭gshare的锦标赛逻辑相比，数值上减少的部分。可以看出在BIAN和FUXI分支预测正确率的下降量相当时，BIAN的IPC比FUXI的下降得更多。证实了乱序结构对转移预测正确率更敏感的结论。
 
 另外，单独观察multiply程序的数据，发现在转移预测正确率上，FUXI和BIAN持平，但是IPC上却是FUXI要高于BIAN。而且考虑到后文分析到的后端对前端的阻塞周期占比(见图\ref{fig:stall_rate})，multiply在FUXI和BIAN架构下的阻塞都很少，所以基本上可以认定：分支跳转错误后的撤销，是影响处理器运行multiply性能的主要因素。这样，进一步说明了乱序结构对转移预测正确率更加敏感。
 
